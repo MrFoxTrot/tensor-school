@@ -2,19 +2,21 @@
 from random import randint
 from inventory import Inventory, Item
 
+
 def task_1():
     print("Задание #1")
     length = 10
     print("Создаю массив рандомных чисел, длина массива %d" % length)
     array = [randint(0, 200) for _ in range(length)]
     print("Созданный массив: %s " % array)
-    for i in range(length -1):
-        for j in range(length - i -1):
+    for i in range(length - 1):
+        for j in range(length - i - 1):
             if array[j] > array[j + 1]:
                 temp = array[j]
                 array[j] = array[j + 1]
                 array[j + 1] = temp
-    print("Отсортированный массив: %s " % array) 
+    print("Отсортированный массив: %s " % array)
+
 
 def task_2():
     print("Задание #2")
@@ -51,11 +53,13 @@ def task_2():
                 print("[❌] Неизвестный код")
             else:
                 color = colors[code]
-                print("\n[✔] Информация о цвете:\nКод: %s\nКод в 10-чной системе: %s; \t в 16-чной системе: #%02x%02x%02x\n" % (code, color, *color))
+                print("\n[✔] Информация о цвете:\nКод: %s\nКод в 10-чной системе: %s; \t в 16-чной системе: #%02x%02x%02x\n" %
+                      (code, color, *color))
         elif i.lower() == "стоп":
             break
         else:
             print("[❌] Неизвестная команда")
+
 
 def task_3():
     print("Задание #3")
@@ -65,9 +69,13 @@ def task_3():
     print("Созданный массив (2): %s " % array2)
     print("Список элементов:")
     print(" Входящих в оба множества: %s " % list(set(array1) & set(array2)))
-    print(" Входящих только в первое множество: %s " % list(set(array1) - set(array2)))
-    print(" Входящих только во второе множество: %s " % list(set(array2) - set(array1)))
-    print(" Входящих в первое или во второе, но не в оба из них одновременно: %s " % list(set(array1) ^ set(array2)))
+    print(" Входящих только в первое множество: %s " %
+          list(set(array1) - set(array2)))
+    print(" Входящих только во второе множество: %s " %
+          list(set(array2) - set(array1)))
+    print(" Входящих в первое или во второе, но не в оба из них одновременно: %s " %
+          list(set(array1) ^ set(array2)))
+
 
 def task_4():
     print("Задание #4")
@@ -84,14 +92,16 @@ def task_4():
         print(" предметы - список доступных предметов")
         print(" инфо [номер предмета] - информация о предмете")
         print(" добавить [id предмета] - добавить предмет в инвентарь")
-        print(" удалить [номер предмета в инвентаре] - удалить предмет из инветаря")
+        print(
+            " удалить [номер предмета в инвентаре] - удалить предмет из инветаря")
         print(" стоп - выйти")
         i = input(": ")
         if i.lower() == "инвентарь":
             print("Инвентарь:\n%s" % inventory.get_inventory())
 
         elif i.lower() == "предметы":
-            print("Список предметов:\n\tНазвание\tВес\n%s" % '\n'.join(["%d)%s -\t%s\t\t%0.2f" % (i+1, items[i].emoji, items[i].name, items[i].weight) for i in range(len(items))]))
+            print("Список предметов:\n\tНазвание\tВес\n%s" % '\n'.join(["%d)%s -\t%s\t\t%0.2f" % (
+                i+1, items[i].emoji, items[i].name, items[i].weight) for i in range(len(items))]))
 
         elif i.lower().startswith("инфо "):
             item_pos = i.lower().split("инфо ")[1]
@@ -101,17 +111,19 @@ def task_4():
             except ValueError:
                 print("[❌] Неверно указан номер предмета (укажите номер числом)")
             except:
-                print("[❌] Неверно указан номер предмета (предмета с таким номером нет)")
+                print(
+                    "[❌] Неверно указан номер предмета (предмета с таким номером нет)")
 
         elif i.lower().startswith("добавить "):
             item_id = i.lower().split("добавить ")[1]
             try:
-                item_id = int(item_id) -1
-                if item_id < 0 or len(items) < item_id: 
+                item_id = int(item_id) - 1
+                if item_id < 0 or len(items) < item_id:
                     return print("[❌] Неверно указан номер предмета (предмета с таким номером нет)")
 
                 inventory.add(items[item_id])
-                print("[✔] Вы успешно добавили предмет %s" % items[item_id].name)
+                print("[✔] Вы успешно добавили предмет %s" %
+                      items[item_id].name)
             except ValueError:
                 print("[❌] Неверно указан номер предмета (укажите номер числом)")
             except:
@@ -121,11 +133,13 @@ def task_4():
             item_pos = i.lower().split("удалить ")[1]
             try:
                 item_pos = int(item_pos)
-                print("[✔] Вы успешно удалили предмет %s" % inventory.remove(item_pos).name)
+                print("[✔] Вы успешно удалили предмет %s" %
+                      inventory.remove(item_pos).name)
             except ValueError:
                 print("[❌] Неверно указан номер предмета (укажите номер числом)")
             except:
-                print("[❌] Неверно указан номер предмета (предмета с таким номером нет)")
+                print(
+                    "[❌] Неверно указан номер предмета (предмета с таким номером нет)")
 
         elif i.lower() == "стоп":
             break
@@ -133,6 +147,7 @@ def task_4():
             print("[❌] Неизвестная команда\n")
 
     pass
+
 
 if __name__ == "__main__":
     task_number = input("Введите номер задания[1-4]: ")
