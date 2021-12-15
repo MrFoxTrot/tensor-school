@@ -52,7 +52,7 @@ def task():
         return
     x1, x2 = math_quadratic_equation(a, b, c)
     print("Корни уравнения")
-    print("x1\t:{0}\tx2:\t{1}".format(x1, x2 if x2 else ''))
+    print("x1:\t{0}\nx2:\t{1}".format(x1, x2 if x2 else ''))
 
 
 def math_quadratic_equation(a, b, c):
@@ -70,4 +70,4 @@ def math_quadratic_equation(a, b, c):
 
 
 if __name__ == "__main__":
-    math_quadratic_equation()
+    task()
