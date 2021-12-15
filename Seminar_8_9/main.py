@@ -42,6 +42,7 @@ def slow_down(func):
 @wrapper_time
 def task():
     print("Формула квадратного уравнения: ax^2+bx+c=0")
+
     try:
         a = float(input("Укажите a:"))
         b = float(input("Укажите b:"))
@@ -49,6 +50,13 @@ def task():
     except:
         print('Неверно указаны параметры уравнения')
         return
+    x1, x2 = math_quadratic_equation(a, b, c)
+    print("Корни уравнения")
+    print("x1\t:{0}\tx2:\t{1}".format(x1, x2 if x2 else ''))
+
+
+def math_quadratic_equation(a, b, c):
+    x1, x2 = None, None
     D = b**2 - 4*a*c
     if D > 0:
         x1 = (-b + math.sqrt(D))/(2*a)
@@ -58,10 +66,8 @@ def task():
     else:
         x1 = (-b + cmath.sqrt(D))/(2*a)
         x2 = (-b - cmath.sqrt(D))/(2*a)
-
-    print("Корни уравнения")
-    print("x1\t:{0}\tx2:\t{1}".format(x1, x2 if x2 else ''))
+    return x1, x2
 
 
 if __name__ == "__main__":
-    task()
+    math_quadratic_equation()
